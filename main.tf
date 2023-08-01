@@ -30,7 +30,7 @@ resource "aws_iam_role" "this" {
       })
     }
     
-    managed_policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+    managed_policy_arns = [aws_iam_policy.policy.arn, "arn:aws:iam::aws:policy/ReadOnlyAccess"]
 }
 
 resource "aws_iam_policy" "policy" {

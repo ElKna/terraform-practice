@@ -17,4 +17,16 @@ resource "aws_iam_role" "this" {
             }, 
         ]
     })
+
+    inline_policy {
+      name = "my_inline_policy"
+      policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = {
+            Action      = ["ec2:Describe*"]
+            Effect      = "Allow"
+            Resource    = "*"
+        },
+      })
+    }
 }
